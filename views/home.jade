@@ -1,0 +1,20 @@
+extends layout
+
+block content
+ .container
+  h4 GEA Acil Durum Yönetim Sistemi
+  if(altstatus_active=="No")
+   .alert.alert-success
+    | #{altstatus_text}
+  if(altstatus_active =="Yes")
+   .alert.alert-danger
+    | #{altstatus_text}
+  if user
+   .well.well-sm
+    | #{user.profile.name}
+  if user
+   h4 Duyurular
+   .list-group
+    for pNotification in sNotifications
+       .list-group-item
+        a(href="http://" + pNotification.notification_data.siteLink) #{pNotification.notification_data.shortText}

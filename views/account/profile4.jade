@@ -1,0 +1,57 @@
+extends ../layout
+
+block content
+    h3 İş Adresi Bilgileri
+    form.form-horizontal(id='userForm',action='/account/profile4', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        input(type='hidden', name='profile_form_id', value=4)
+        .form-group
+            label.col-sm-3.control-label(for='WorkLevel') İş Kat Numarası
+            .col-sm-7
+                input.form-control(type='number', name='WorkLevel', id='WorkLevel', value='#{user.profile.WorkLevel}')
+        .form-group
+            label.col-sm-3.control-label(for='WorkLevelNumber') İş Kat Sayısı
+            .col-sm-7
+                input.form-control(type='number', name='WorkLevelNumber', id='WorkLevelNumber', value='#{user.profile.WorkLevelNumber}')
+        .form-group
+            label.col-sm-3.control-label(for='WorkName') İş Adı
+            .col-sm-7
+                input.form-control(type='WorkName', name='WorkName', id='WorkName', value='#{user.profile.WorkName}')
+        .form-group
+            label.col-sm-3.control-label(for='SecurityCamLocation') Güvenlik Kamerası Yeri
+            .col-sm-7
+                input.form-control(type='SecurityCamLocation', name='SecurityCamLocation', id='SecurityCamLocation', value='#{user.profile.SecurityCamLocation}')
+        .form-group
+            label.col-sm-3.control-label(for='WorkLocation_lat') İş Enlem
+            .col-sm-7
+                input.form-control(type='text', name='WorkLocation_lat', id='WorkLocation_lat', value='#{user.profile.WorkLocation_lat}')
+        .form-group
+            label.col-sm-3.control-label(for='WorkLocation_long') İş Boylam
+            .col-sm-7
+                input.form-control(type='text', name='WorkLocation_long', id='WorkLocation_long', value='#{user.profile.WorkLocation_long}')
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/selectLocation?HomeorBusiness=2'")
+                    i.fa.fa-pencil
+                    | Lokasyonu Haritadan Seç
+        .form-group
+            label.col-sm-3.control-label Lokasyon Resmi
+            .col-sm-7
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/uploadfile'")
+                    i.fa.fa-pencil
+                    | Lokasyon Dış Resmi Yükle
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/showpicture'")
+                    i.fa.fa-pencil
+                    | Lokasyon Dış Resmi Göster
+        .form-group
+            label.col-sm-3.control-label İkinci Resim
+            .col-sm-7
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/uploadfile2'")
+                    i.fa.fa-pencil
+                    | ikinci Resmi Yükle
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/showpicture2'")
+                    i.fa.fa-pencil
+                    | İkinci Resmi Göster
+        .form-group
+            .col-sm-offset-3.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                    i.fa.fa-pencil
+                    | Profili Güncelle

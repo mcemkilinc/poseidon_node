@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Yeni Duyuru Oluştur
+
+  form.form-horizontal(action='/notification/createNotification', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='queueNumber') Duyuru Sıra Numarası
+      .col-sm-7
+        input.form-control(type='text', name='queueNumber', id='queueNumber', value='Duyuru Sıra No')
+    .form-group
+      label.col-sm-3.control-label(for='shortText') Kısa Metin
+      .col-sm-7
+        input.form-control(type='text', name='shortText', id='shortText', value='Kısa Metin')
+    .form-group
+      label.col-sm-3.control-label(for='longText') Uzun Metin
+      .col-sm-7
+       input.form-control(type='text', name='longText', id='longText', value='Uzun Metin')
+    .form-group
+      label.col-sm-3.control-label(for='siteLink') Duyuru Linki
+      .col-sm-7
+       input.form-control(type='text', name='siteLink', id='siteLink', value='Duyuru Linki')
+    .form-group
+      label.col-sm-3.control-label(for='siteLink') Mobil Push?
+      .col-sm-7
+        input.form-control(type='text', name='mobilPush', id='mobilPush', value='mobilPush')
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          | Duyuru Oluştur

@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  h4 GEA Acil Durum Yönetim Sistemi
+  h4 Acil Durum Yönet
+  if user
+   .well.well-sm
+    | #{user.profile.name}
+  form.form-horizontal(action='/administration/manageEmergency', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+        input.form-control(type='hidden', name='docid', id='docid', value=sEmergencyStatus._id)
+    .form-group
+        label.col-sm-3.control-label(for='emergencyText') Acil Durum Tanımı
+        .col-sm-7
+            input.form-control(type='text', name='emergencyText', id='emergencyText', value=sEmergencyStatus.emergencyStatusData.emergencyText)
+    .form-group
+        label.col-sm-3.control-label(for='emergencyLevel') Acil Durum Seviyesi
+        .col-sm-7
+            input.form-control(type='text', name='emergencyLevel', id='emergencyLevel', value=sEmergencyStatus.emergencyStatusData.emergencyLevel)
+    .form-group
+        label.col-sm-3.control-label(for='emergencyActive') Acil Durum Aktif (Yes/No)
+        .col-sm-7
+            input.form-control(type='text', name='emergencyActive', id='emergencyActive', value=sEmergencyStatus.emergencyStatusData.emergencyActive)
+      .col-sm-offset-3.col-sm-4
+          button.btn.btn.btn-primary(type='submit')
+              i.fa.fa-pencil
+              | Acil Durum Güncelle

@@ -1,0 +1,57 @@
+extends ../layout
+
+block content
+    h3 Ev Adresi Bilgileri
+    form.form-horizontal(id='userForm',action='/account/profile3', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        input(type='hidden', name='profile_form_id', value=5)
+        .form-group
+            label.col-sm-3.control-label(for='LevelStayed') Kat Numarası
+            .col-sm-7
+                input.form-control(type='number', name='LevelStayed', id='LevelStayed', value='#{user.profile.LevelStayed}')
+        .form-group
+            label.col-sm-3.control-label(for='InternalDefOfHome') Ev Tanımı
+            .col-sm-7
+                input.form-control(type='InternalDefOfHome', name='InternalDefOfHome', id='InternalDefOfHome', value='#{user.profile.InternalDefOfHome}')
+        .form-group
+            label.col-sm-3.control-label(for='HomeAddress') Ev Adresi
+            .col-sm-7
+                input.form-control(type='HomeAddress', name='HomeAddress', id='HomeAddress', value='#{user.profile.HomeAddress}')
+        .form-group
+            label.col-sm-3.control-label(for='SpecialAlert') Ev Tarifi
+            .col-sm-7
+                input.form-control(type='text', name='SpecialAlert', id='SpecialAlert', value='#{user.profile.SpecialAlert}')
+        .form-group
+            label.col-sm-3.control-label(for='location_lat') Enlem
+            .col-sm-7
+                input.form-control(type='text', name='location_lat', id='location_lat', value='#{user.profile.location_lat}')
+        .form-group
+            label.col-sm-3.control-label(for='location_lat') Boylam
+            .col-sm-7
+                input.form-control(type='text', name='location_long', id='location_long', value='#{user.profile.location_long}')
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/selectLocation?HomeorBusiness=1'")
+                    i.fa.fa-pencil
+                    | Lokasyonu Haritadan Seç
+        .form-group
+            label.col-sm-3.control-label Lokasyon Resmi
+            .col-sm-7
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/uploadfile'")
+                    i.fa.fa-pencil
+                    | Lokasyon Dış Resmi Yükle
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/showpicture'")
+                    i.fa.fa-pencil
+                    | Lokasyon Dış Resmi Göster
+        .form-group
+            label.col-sm-3.control-label İkinci Resim
+            .col-sm-7
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/uploadfile2'")
+                    i.fa.fa-pencil
+                    | ikinci Resmi Yükle
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/showpicture2'")
+                    i.fa.fa-pencil
+                    | İkinci Resmi Göster
+        .form-group
+            .col-sm-offset-3.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                    i.fa.fa-pencil
+                    | Profili Güncelle

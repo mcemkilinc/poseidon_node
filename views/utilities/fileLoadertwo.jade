@@ -1,0 +1,17 @@
+extends ../layout
+block content
+        .container
+            .row
+                .col-xs-12
+                    .panel.panel-default
+                        .panel-body
+                            span.glyphicon.glyphicon-cloud-upload
+                            h2 Dosya Yükleme
+                            .progress
+                                .progress-bar(role='progressbar')
+                            button#uploadbutt.btn.btn-lg.upload-btn(type='button') Dosya Yükle
+        input#upload-input2(type='file', name='uploads[]', multiple='multiple')
+        br
+        script(src='https://code.jquery.com/jquery-2.2.0.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+        script(type="text/javascript",src='/js/uploadtwo.js')

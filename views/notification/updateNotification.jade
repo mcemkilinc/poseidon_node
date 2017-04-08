@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Duyuru Güncelle
+
+  form.form-horizontal(action='/notification/updateNotification', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      input.form-control(type='hidden', name='docid', id='docid', value=sNotification._id)
+    .form-group
+      label.col-sm-3.control-label(for='queueNumber') Duyuru Sıra Numarası
+      .col-sm-7
+        input.form-control(type='text', name='queueNumber', id='queueNumber', value=sNotification.notification_data.queueNumber)
+    .form-group
+      label.col-sm-3.control-label(for='shortText') Kısa Metin
+      .col-sm-7
+        input.form-control(type='text', name='shortText', id='shortText', value=sNotification.notification_data.shortText)
+    .form-group
+      label.col-sm-3.control-label(for='longText') Uzun Metin
+      .col-sm-7
+       input.form-control(type='text', name='longText', id='longText', value=sNotification.notification_data.longText)
+    .form-group
+      label.col-sm-3.control-label(for='siteLink') Duyuru Linki
+      .col-sm-7
+       input.form-control(type='text', name='siteLink', id='siteLink', value=sNotification.notification_data.siteLink)
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          | Duyuru Güncelle

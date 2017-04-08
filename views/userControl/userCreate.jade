@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+    h3 Kullanıcı Oluştur
+    form.form-horizontal(action='/UserControl/UserCreate', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+            label.col-sm-3.control-label(for='name') Ad
+            .col-sm-7
+                input.form-control(type='text', name='name', id='name')
+        .form-group
+            label.col-sm-3.control-label(for='surname') Soyadı
+            .col-sm-7
+                input.form-control(type='text', name='surname', id='surname')
+        .form-group
+            label.col-sm-3.control-label(for='email') E-mail
+            .col-sm-7
+                input.form-control(type='email', name='email', id='email')
+        .form-group
+            label.col-sm-3.control-label(for='MobilePhone') Cep Telefonu
+            .col-sm-7
+                input.form-control(type='MobilePhone', name='MobilePhone', id='MobilePhone')
+        .form-group
+            label.col-sm-3.control-label(for='membertype') Üye tipi
+            .col-sm-4
+                label.radio.col-sm-4
+                    input(type='radio', checked name='membertype', value='Member', data-toggle='radio')
+                    span Member
+                label.radio.col-sm-4
+                    input(type='radio', name='membertype', value='AlertManager', data-toggle='radio')
+                    span AlertManager
+                label.radio.col-sm-4
+                    input(type='radio', name='membertype', value='AlertManagerHelper', data-toggle='radio')
+                    span AlertManagerHelper
+        .form-group
+            .col-sm-offset-3.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                    i.fa.fa-pencil
+                    | Kullanıcı Oluştur

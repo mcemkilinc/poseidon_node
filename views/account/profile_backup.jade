@@ -1,0 +1,128 @@
+extends ../layout
+
+block content
+    h3 Temel Profil Bilgileri
+    form.form-horizontal(id='userForm',action='/account/profile', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+            label.col-sm-3.control-label(for='name') Ad
+            .col-sm-7
+                input.form-control(readonly, type='text', name='name', id='name', value='#{user.profile.name}')
+        .form-group
+            label.col-sm-3.control-label(for='surname') Soyadı
+            .col-sm-7
+                input.form-control(readonly,type='text', name='surname', id='surname', value='#{user.profile.surname}')
+        .form-group
+            label.col-sm-3.control-label(for='email') E-mail
+            .col-sm-7
+                input.form-control(readonly,type='email', name='email', id='email', value='#{user.email}')
+
+        .form-group
+            label.col-sm-3.control-label(for='TCKN') Tc Kimlik No
+            .col-sm-7
+                input.form-control(readonly,type='number',min="10000000000",max="99999999999" name='TCKN', id='TCKN', value='#{user.profile.TCKN}')
+        .form-group
+            label.col-sm-3.control-label(for='Bolge') Bölge
+            .col-sm-7
+                input.form-control(readonly,type='Bolge', name='Bolge', id='Bolge', value='#{user.profile.Bolge}')
+        .form-group
+            label.col-sm-3.control-label(for='Sube') Şube
+            .col-sm-7
+                input.form-control(readonly,type='Sube', name='Sube', id='Sube', value='#{user.profile.Sube}')
+        .form-group
+            label.col-sm-3.control-label(for='Organisation') Organizasyon
+            .col-sm-7
+                input.form-control(readonly,type='Organisation', name='Organisation', id='Organisation', value='#{user.profile.Organisation}')
+        .form-group
+            label.col-sm-3.control-label(for='MobilePhone') Cep Telefonu
+            .col-sm-7
+                input.form-control(readonly,type='tel', name='MobilePhone', id='MobilePhone', value='#{user.profile.MobilePhone}')
+        .form-group
+            label.col-sm-3.control-label(for='birthdate') Dogum Tarihi
+            .col-sm-7
+                input.form-control(type='date', name='birthdate', id='birthdate', value='#{user.profile.birthdate}')
+        .form-group
+            label.col-sm-3.control-label(for='LevelStayed') Kat Numarası
+            .col-sm-7
+                input.form-control(type='number', name='LevelStayed', id='LevelStayed', value='#{user.profile.LevelStayed}')
+        .form-group
+            label.col-sm-3.control-label(for='InternalDefOfHome') Ev Tanımı
+            .col-sm-7
+                input.form-control(type='InternalDefOfHome', name='InternalDefOfHome', id='InternalDefOfHome', value='#{user.profile.InternalDefOfHome}')
+        .form-group
+            label.col-sm-3.control-label(for='HomePhone') Ev Telefonu
+            .col-sm-7
+                input.form-control(type='tel', name='HomePhone', id='HomePhone', value='#{user.profile.HomePhone}')
+        .form-group
+            label.col-sm-3.control-label(for='HomeAddress') Ev Adresi
+            .col-sm-7
+                input.form-control(type='HomeAddress', name='HomeAddress', id='HomeAddress', value='#{user.profile.HomeAddress}')
+
+        .form-group
+            label.col-sm-3.control-label(for='SpecialAlert') Özel Uyarı
+            .col-sm-7
+                input.form-control(type='text', name='SpecialAlert', id='SpecialAlert', value='#{user.profile.SpecialAlert}')
+        .form-group
+            label.col-sm-3.control-label(for='gender') Cinsiyet
+            .col-sm-4
+                label.radio.col-sm-4
+                    input(type='radio', checked name='gender', value='male', data-toggle='radio')
+                    span Erkek
+                label.radio.col-sm-4
+                    input(type='radio', name='gender', value='female', data-toggle='radio')
+                    span Kadın
+        .form-group
+            label.col-sm-3.control-label(for='DeviceType') Alet İşletim Sistemi
+            .col-sm-4
+                label.radio.col-sm-4
+                    input(type='radio', checked=user.profile.DeviceType == 'Android', name='DeviceType', value='Android', data-toggle='radio')
+                    span Android
+                label.radio.col-sm-4
+                    input(type='radio', checked=user.profile.DeviceType == 'iPhone', name='DeviceType', value='iPhone', data-toggle='radio')
+                    span iPhone
+                label.radio.col-sm-4
+                    input(type='radio', checked=user.profile.DeviceType == 'Windows Phone', name='DeviceType', value='Windows Phone', data-toggle='radio')
+                    span Windows Phone
+
+        .form-group
+            label.col-sm-3.control-label(for='BloodType') Kan Grubu
+            .col-sm-7
+                input.form-control(type='text', name='BloodType', id='BloodType', value='#{user.profile.BloodType}')
+        .form-group
+            label.col-sm-3.control-label(for='location') Enlem
+            .col-sm-7
+                input.form-control(type='text', name='location_lat', id='location_lat', value='#{user.profile.location_lat}')
+        .form-group
+            label.col-sm-3.control-label(for='location') Boylam
+            .col-sm-7
+                input.form-control(type='text', name='location_long', id='location_long', value='#{user.profile.location_long}')
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/selectLocation'")
+                    i.fa.fa-pencil
+                    | Lokasyonu Haritadan Seç
+        .form-group
+            label.col-sm-3.control-label Lokasyon Resmi
+            .col-sm-7
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/uploadfile'")
+                    i.fa.fa-pencil
+                    | Lokasyon Dış Resmi Yükle
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/showpicture'")
+                    i.fa.fa-pencil
+                    | Lokasyon Dış Resmi Göster
+        .form-group
+            label.col-sm-3.control-label İkinci Resim
+            .col-sm-7
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/uploadfile2'")
+                    i.fa.fa-pencil
+                    | ikinci Resmi Yükle
+                button.btn.btn.btn-primary(type='button',onclick="window.location.href='/showpicture2'")
+                    i.fa.fa-pencil
+                    | İkinci Resmi Göster
+        .form-group
+            label.col-sm-3.control-label(for='website') Website
+            .col-sm-7
+                input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
+        .form-group
+            .col-sm-offset-3.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                    i.fa.fa-pencil
+                    | Profili Güncelle

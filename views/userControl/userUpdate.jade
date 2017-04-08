@@ -1,0 +1,47 @@
+extends ../layout
+
+block content
+    .page-header
+        h3 Kullanıcı Güncelle
+
+    form.form-horizontal(action='/userControl/userUpdate', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+            input.form-control(type='hidden', name='userid', id='userid', value=sUser._id)
+        .form-group
+            label.col-sm-3.control-label(for='name') Adı
+            .col-sm-7
+                input.form-control(type='name', name='name', id='name', value=sUser.profile.name)
+        .form-group
+            label.col-sm-3.control-label(for='surname') Soyadı
+            .col-sm-7
+                input.form-control(type='surname', name='surname', id='surname', value=sUser.profile.surname)
+        .form-group
+            label.col-sm-3.control-label(for='email') E-mail
+            .col-sm-7
+                input.form-control(type='email', name='email', id='email', value='#{sUser.email}')
+        .form-group
+            label.col-sm-3.control-label(for='MobilePhone') Cep Telefonu
+            .col-sm-7
+                input.form-control(type='tel', name='MobilePhone', id='MobilePhone', value='#{sUser.profile.MobilePhone}')
+        .form-group
+            label.col-sm-3.control-label(for='TCKN') Tc Kimlik No
+            .col-sm-7
+                input.form-control(type='number',min="10000000000",max="99999999999" name='TCKN', id='TCKN', value='#{sUser.profile.TCKN}')
+        .form-group
+            label.col-sm-3.control-label(for='Bolge') Bölge
+            .col-sm-7
+                input.form-control(type='Bolge', name='Bolge', id='Bolge', value='#{sUser.profile.Bolge}')
+        .form-group
+            label.col-sm-3.control-label(for='Sube') Şube
+            .col-sm-7
+                input.form-control(type='Sube', name='Sube', id='Sube', value='#{sUser.profile.Sube}')
+        .form-group
+            label.col-sm-3.control-label(for='Organisation') Organizasyon
+            .col-sm-7
+                input.form-control(type='Organisation', name='Organisation', id='Organisation', value='#{sUser.profile.Organisation}')
+        .form-group
+            .col-sm-offset-3.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                    i.fa.fa-pencil
+                    | Kullanıcı Güncelle

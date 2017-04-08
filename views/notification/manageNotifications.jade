@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+
+  .page-header
+    h3 Duyuruları Yönet
+  .container-fluid
+   table(class=table).table-bordered.table-hover.table-striped.table-condensed
+    thead
+      tr
+       th Numara
+       th Kısa Tanım
+       th Uzun Tanım
+       th Duyuru Linki
+       th ID
+     for jNotification in sNotifications
+      tr
+       td #{jNotification.notification_data.queueNumber}
+       td #{jNotification.notification_data.shortText}
+       td #{jNotification.notification_data.longText}
+       td #{jNotification.notification_data.siteLink}
+       td #{jNotification.notification_data.mobilPush}
+       td
+        .button.btn-primary(onclick="location.href = '/notification/updateNotification?id=#{jNotification._id}'")
+         | Güncelle
+       td
+        .button.btn-primary(onclick="location.href = '/notification/deleteNotification?id=#{jNotification._id}'")
+         | Sil
+

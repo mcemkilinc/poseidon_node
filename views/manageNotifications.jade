@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h4 Duyuru Ekleme
+  .alert.alert-success
+   | #{altstatus}
+  if user
+   .well.well-sm
+    | #{user.profile.name}
+  h4 Duyurular
+  .list-group
+   each val in pNotifications.length ? pNotifications : ['There are no values']
+      .list-group-item
+       a(href="http://www.google.com") #{val}

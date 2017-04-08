@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    h3 İletişim Zinciri
+    form.form-horizontal(id='userForm',action='/account/profile6', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        input(type='hidden', name='profile_form_id', value=6)
+        |Acil bir durumda sizinle ilgili bilgi alabileceğimiz ikamet ettiğiniz şehir dışında yaşayan yakınlarınızın bilgileri (en fazla 3 kişi)
+        .form-group
+            label.col-sm-3.control-label(for='CommunicationChain')
+            .col-sm-7
+                textarea(rows='5')#CommunicationChain.form-control(name='CommunicationChain',placeholder='Ad, Soyad, Cinsiyet, Telefon')
+                    |#{user.profile.CommunicationChain}
+        .form-group
+            .col-sm-offset-3.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                    i.fa.fa-pencil
+                    | Profili Güncelle

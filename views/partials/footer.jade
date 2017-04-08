@@ -1,0 +1,48 @@
+
+p
+p
+ul.nav.nav-pills
+    li(class=(title == 'Home') ? 'active' : undefined)
+      a(href='/') Ana Sayfa
+    if !user
+     li(class=(title == 'Login') ? 'active' : undefined)
+        a(href='/login') Giriş
+     //li(class=(title == 'Create Account') ? 'active' : undefined)
+        //a(href='/signup') Yeni&nbsp Hesap
+    else
+      li.dropup(class=(title == 'Account Management') ? 'active' : undefined)
+        a.dropdown-toggle(href='#', data-toggle='dropdown')
+          | #{user.profile.name || user.email || user.id}&nbsp;
+          i.caret
+        ul.dropdown-menu
+          li
+              a(href='/account6') İletişim Zinciri
+          li.divider
+          li
+              a(href='/account5') Aynı Evde Kaldığınız Kişiler
+          li.divider
+          li
+              a(href='/account4') İş Adresi Bilgileri
+          li.divider
+          li
+              a(href='/account3') Ev Adresi Bilgileri
+          li.divider
+          li
+              a(href='/account2') Kişisel Bilgiler
+          li.divider
+          li
+            a(href='/account') Hesap Bilgileri
+          li.divider
+          li
+            a(href='/logout') Çıkış
+          li.divider
+          li
+            a(href='/forgot') Şifre Değişikliği
+    li(class=(title == 'Contact') ? 'active' : undefined)
+      a(href='/contact') Yardım
+.container.text-center
+p
+p.pull-left © 2016 GEA , Bütün Hakları Saklıdır
+ul.pull-right.list-inline
+  li
+    a(href='gea.org.tr') GEA

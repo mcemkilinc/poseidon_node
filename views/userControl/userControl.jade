@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+
+    .page-header
+        h3 Poseidon Üye Yönetim Ekranı
+    .container-fluid
+        table(class=table).table-bordered.table-hover.table-striped.table-condensed
+            thead
+            td
+                .button.btn-primary(onclick="location.href = '/userControl/userCreate'")
+                    | Kullanıcı Ekle
+            td
+                .button.btn-primary(onclick="location.href = '/userControl/memberListLoad'")
+                    | Kullanıcı Listesi Yükleme
+            tr
+                    th Ad Soyad
+                    th E-Posta
+                    th Telefon
+                    th TC Kimlik No
+                    th Kurum Adı
+                    th Bölge
+                    th Şube
+                    th Rol
+
+            for Users in sUsers
+                tr
+                    td #{Users.profile.name +" "+ Users.profile.surname  }
+                    td #{Users.email}
+                    td #{Users.profile.MobilePhone}
+                    td #{Users.profile.TCKN}
+                    td #{Users.profile.Organisation}
+                    td #{Users.profile.Bolge}
+                    td #{Users.profile.Sube}
+                    td #{Users.profile.membertype}
+                    td
+                        .button.btn-primary(onclick="location.href = '/userControl/userUpdate?id=#{Users._id}'")
+                            | Güncelle
+                    td
+                        .button.btn-primary(onclick="location.href = '/userControl/userChangeRole?id=#{Users._id}'")
+                            | Rol Değiştir
+                    td
+                        .button.btn-primary(onclick="location.href = '/userControl/userDelete?id=#{Users._id}'")
+                            | Sil
+

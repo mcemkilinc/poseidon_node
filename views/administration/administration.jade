@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  h4 GEA Acil Durum Yönetim Sistemi
+  h4 Site Yönetim İşlemleri
+  if user
+   .well.well-sm
+    | #{user.profile.name}
+  ul.nav
+   li(class=(title == 'Home') ? 'active' : undefined)
+       a(href='/administration/createEmergency') İlk Acil Durum Oluştur
+   li(class=(title == 'Home') ? 'active' : undefined)
+       a(href='/administration/manageEmergency') Acil Durum Yönet
+   li(class=(title == 'Home') ? 'active' : undefined)
+       a(href='/notification/createNotification') Yeni Duyuru Oluştur
+   li(class=(title == 'Home') ? 'active' : undefined)
+       a(href='/notification/manageNotifications') Duyuruları Yönet

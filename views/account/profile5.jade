@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+    h3 Aynı Evde Kaldığınız Kişiler
+    form.form-horizontal(id='userForm',action='/account/profile5', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        input(type='hidden', name='profile_form_id', value=5)
+        .form-group
+            label.col-sm-3.control-label(for='HomeLifeExplanation') Evdeki Yaşamın Açıklaması
+            .col-sm-7
+                textarea(rows='5')#HomeLifeExplanation.form-control(name='HomeLifeExplanation',placeholder='Tanım Girilmeli')
+                    |#{user.profile.HomeLifeExplanation}
+        .form-group
+            label.col-sm-3.control-label(for='PeopleLiveinSameHome') Kişi Listesi
+            .col-sm-7
+                textarea(rows='5')#PeopleLiveinSameHome.form-control(name='PeopleLiveinSameHome',placeholder='Ad, Soyad, Yaş, Cinsiyet, Telefon')
+                    |#{user.profile.PeopleLiveinSameHome}
+        .form-group
+            label.col-sm-3.control-label(for='SpecialEmergencyInformation') Özel Acil Durum Bilgileri
+            .col-sm-7
+                textarea(rows='5')#SpecialEmergencyInformation.form-control(name='SpecialEmergencyInformation',placeholder='Tanım Girilmeli')
+                    |#{user.profile.SpecialEmergencyInformation}
+        .form-group
+            .col-sm-offset-3.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                    i.fa.fa-pencil
+                    | Profili Güncelle

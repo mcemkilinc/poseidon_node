@@ -1,0 +1,7 @@
+-Kullanıcılar consolda gözüküyor fakat Jade kısmında gözükmüyor
+-Yeni controller dosyası yaptığım zaman app.jsde gözükmüyor
+-İkinci resim yükleme ekranında DosyaYukle butonu çalışmıyor
+-Member Type sadece gösterme şeklinde olmalı
+-BloodType Çalışmıyor
+-Dosyayı db'de bulamazsa sunucu çöküyor
+-

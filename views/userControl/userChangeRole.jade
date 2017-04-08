@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+    .page-header
+        h3 Role değiştir
+
+    form.form-horizontal(action='/UserControl/userChangeRole', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+        input.form-control(type='hidden', name='roleid', id='roleid', value=sUser._id)
+        .form-group
+            label.col-sm-3.control-label(for='membertype') Üye tipi
+            .col-sm-4
+                label.radio.col-sm-4
+                    input(type='radio', checked=sUser.profile.membertype == 'Member', name='membertype', value='Member', data-toggle='radio')
+                    span Member
+                label.radio.col-sm-4
+                    input(type='radio', checked=sUser.profile.membertype == 'AlertManager', name='membertype', value='AlertManager', data-toggle='radio')
+                    span AlertManager
+                label.radio.col-sm-4
+                    input(type='radio', checked=sUser.profile.membertype == 'AlertManagerHelper', name='membertype', value='AlertManagerHelper', data-toggle='radio')
+                    span AlertManagerHelper
+        .form-group
+            .col-sm-offset-3.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                    i.fa.fa-pencil
+                    | Role değiştir

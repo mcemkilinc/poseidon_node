@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+
+    .page-header
+        h3 Toplu Üye Yükleme Ekranı
+        form#uploadForm(ref='uploadForm', action='/userControl/memberListLoad', method='post', enctype='multipart/form-data')
+            input#loadFileXml(type='button', value='Üye Dosyası Seç', onclick="document.getElementById('file').click();")
+            p
+            input#file(type='file', style='display:none;', name='memberListFile')
+            input(type='submit', value='Yükle')
+
